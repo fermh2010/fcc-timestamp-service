@@ -3,6 +3,8 @@
 const express = require('express');
 const app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 app.get('/:time', function(req, res, next) {
     const raw_time = req.params.time;
     var date;
@@ -25,4 +27,4 @@ app.get('/:time', function(req, res, next) {
     res.json(out);
 });
 
-app.listen(8080);
+app.listen(app.get('port'));
